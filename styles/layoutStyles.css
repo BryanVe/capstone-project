@@ -19,6 +19,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .logo-img {
@@ -30,6 +31,7 @@ header {
   width: 150px;
   font-size: 25px;
   margin: 0 0 0 10px;
+  color: #fff;
 }
 
 .divider {

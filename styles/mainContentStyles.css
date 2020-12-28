@@ -1,0 +1,30 @@
+.main-wrapper {
+  height: calc(100vh - 200px);
+}
+
+.main-content {
+  position: relative;
+  background-color: #c2c2c2;
+  width: 90%;
+  max-width: 1600px;
+  left: 50%;
+  transform: translate(-50%);
+  height: 100%;
+  color: #000;
+}
+
+.hide-section {
+  display: none;
+}
+
+@media (max-width: 1400px) {
+  .main-wrapper {
+    height: calc(100vh - 155px);
+  }
+}
+
+@media (max-width: 960px) {
+  .main-wrapper {
+    height: calc(100vh - 255px);
+  }
+}
