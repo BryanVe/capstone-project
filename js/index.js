@@ -30,7 +30,8 @@ const createNavbarButton = (innerText) => {
 
 const createContentToOption = (html) => {
   let content = document.createElement('div')
-  content.innerHTML = `<p>${html}</p>`
+  content.style.height = '100%'
+  content.innerHTML = html
 
   return content
 }
@@ -40,13 +41,31 @@ const wrapper = document.getElementById('wrapper')
 let navbar = document.createElement('div')
 let mainWrapper = document.createElement('div')
 let mainContent = document.createElement('div')
-let dropdownMenuButton = document.createElement('div')
 navbar = addClassesToNode(navbar, 'navbar-wrapper')
 
 const navbarElements = []
 navbarElements.push({
   button: createNavbarButton('Integrantes'),
-  content: createContentToOption('integrantes')
+  content: createContentToOption(`
+    <div class='members'>
+      <div class='member'>
+        <img class='member-img' alt='member-1' src='https://avatars3.githubusercontent.com/u/45080817?s=400&u=8cd9a60cf18c63fdcc88dc3b2eb13a18b3503d30&v=4' />
+        <p class='member-name'>George Bryan Vera Esquives</p>
+      </div>
+      <div class='member'>
+        <img class='member-img' alt='member-2' src='https://avatars1.githubusercontent.com/u/44950600?s=400&u=8630fe0f5841d5626b799ad6e67bdcef5c0cb565&v=4' />
+        <p class='member-name'>Brando Miguel Palacios Mogollón</p>
+      </div>
+      <div class='member'>
+        <img class='member-img' alt='member-1' src='https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png' />
+        <p class='member-name'>George Bryan Vera Esquives</p>
+      </div>
+      <div class='member'>
+        <img class='member-img' alt='member-1' src='https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png' />
+        <p class='member-name'>Roberto Alexis Cerna Espíritu</p>
+      </div>
+    </div>
+  `)
 })
 navbarElements.push({
   button: createNavbarButton('Documentación de red'),
