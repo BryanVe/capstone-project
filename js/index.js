@@ -72,8 +72,13 @@ navbarElements.push({
   button: createNavbarButton('Bitácora'),
   content: createContentToOption(`
   <div class='bitacora'>
-    <h1>Bitácora</h1>
-    <h2>Bitácora Sede Central:</h2>
+    <h2>Bitácora</h2>
+    <p>La implementación realizada es de modelos estructurados de 3 Sedes de una empresa:
+    <p>La Sede Central con 3 áreas: Servicio de Informática, Área de Gerencias y Área de Estrategias Empresariales.</p>
+    <p>La Sede Atención al cliente también con 3 áreas: Área Atención a servicios Empresariales, Área de Atención al Usuario y Área de Recursos Humanos.</p>
+    <p>La Sede Trujillo con 2 áreas: Oficinas de Jefatura y Oficinas de estrategia Empresarial. La sede Trujillo está ubicada a 560km de la sede central.</p>
+    <p>Las 3 sedes se interconectan por una red VPN desde un servidor de la sede central.</p>
+    <h3>Fechas Sede Central:</h3>
     <ul>
       <li><b>Fecha: 15/12/2020: </b>Propuesta de diseño de la topología de la sede Central</li>
       <li><b>Fecha: 17/12/2020: </b>Actualización de la topología añadimos routers por cada Departamento de las areas</li>
@@ -83,7 +88,7 @@ navbarElements.push({
       <li><b>Fecha: 30/12/2020: </b>Actualización de la topología usamos una unico router en el Servicio de Informatica con 3 sub mascaras usando un switch con 3 WLAN</li>
       <li><b>Fecha: 01/01/2021: </b>Propuesta de diseño de topologia fisica de la sede Central</li>
     </ul>
-    <h2>Bitácora Sede Atención al Cliente</h2>
+    <h3>Fechas Sede Atención al Cliente</h3>
     <ul>
       <li><b>Fecha: 11/12/2020 - 12/12/2020: </b>Topología de las 3 áreas de la sede atención al cliente (Atención a Servicios Empresariales, Atención al usuario, Recursos Humanos)</li>
       <li><b>Fecha: 19/12/2020: </b>Topología de la conexión entre las 3 áreas de la sede Central</li>
@@ -91,7 +96,7 @@ navbarElements.push({
       <li><b>Fecha: 29/12/2020: </b>Llenado del inventario de la sede atención al cliente</li>
       <li><b>Fecha: 02/01/2021: </b>LLenado de los rangos de ip de la sede atención al cliente</li>
     </ul>
-    <h2>Bitácora Sede Trujillo:</h2>
+    <h3>Fechas Sede Trujillo:</h3>
     <ul>
       <li><b>Fecha: 11/12/2020: </b>Propuesta de diseño de la topología de la sede Trujillo</li>
       <li><b>Fecha: 13/12/2020: </b>Actualización de la topología de forma que cada oficina y junto con el data center tengan un router que este conectado al router de frontera </li>
@@ -101,6 +106,31 @@ navbarElements.push({
       <li><b>Fecha: 30/12/2020: </b>Implementación de políticas de enrutamiento en los routers mediante el uso de "ip route" para poder redireccionar a las subnets debidas en el enrutamiento. Y realización de pruebas con ping.</li>
       <li><b>Fecha: 01/01/2021: </b>Pruebas de solicitud DHCP en cada subnet para la asignación de IP's a las VPCS y realización de pruebas con "trace" para visualizar las redirecciones</li>
     </ul>
+    <h3>Inconvenientes con el estudio del proyecto:</h3>
+    <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. La solución más accesible sería por VPN la cual es la que se está implementando en el modelamiento.</p>
+
+    <h3>Inconvenientes con la implementación:</h3>
+    <p>Es complicado crear una topología que se vea de manera completa en un solo proyecto de gns3, así que la implementación se ha llevado por partes, mostrando cada sede, y también mostrando un resumen de interconexión entre las sedes.</p>
+
+    <h3>Inconvenientes con los requisitos:</h3>
+    <p>Uno de los inconvenientes es no conocer el plano interno de la empresa, el modelado se realiza a partir de un modelo conceptual de posibles ubicaciones, estos pueden adaptarse al plano real de la empresa.</p>
+
+    <h3>Problemas que hayan surgido con su resolución:</h3>
+    <p>Existieron problemas con la implementación DHCP, en la sede Trujillo, en la configuración interna del servidor, Se arregló reescribiendo los archivos de configuración DHCP del servidor.</p>
+
+    <h3>Implementaciones adicionales:</h3>
+    <p>Se implemento el protocolo IEEE 802.1Q conocido en GNS3 como dot1Q, genera un mecanismo que crea varias redes por un mismo medio fisico (switch) utilizando una misma interfaz en el cual se le añaden "sub interfazes" para generar varias redes, es decir el router tendra mas de una ip en la misma interfaz.
+      Este se debe añadir en la configuracion del switch teniendo encuenta el puerto especifico.
+      Esto nos ayudara a crear diferentes VLAN por puerto.[1]</p>
+    <a href='./images/imp-adicionales1.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales1.png"></a>
+    <a href='./images/imp-adicionales2.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales2.png"></a>
+    <a href='./images/imp-adicionales3.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales3.png"></a>
+
+    <h3>Referencias bibliográficas:</h3>
+    <p>[1] José Domingo Muñoz, Trabajando con switch en GNS3: VLAN y Trunk. <a href="https://www.josedomingo.org/pledin/2014/02/trabajando-con-switch-en-gns3-vlan-y-trunk/">Link</a> </p> 
+
+
+    
   </div>
   `)
 })
@@ -144,11 +174,52 @@ navbarElements.push({
 })
 navbarElements.push({
   button: createNavbarButton('Proyecto internetworking con GSN3'),
-  content: createContentToOption('internetworking')
+  content: createContentToOption(`
+  <div class='internetworking'>
+    <h3>Topología lógica</h3>
+    <h3>Topología física</h3>
+    <h3>Centralización de servidores</h3>
+    <h3>Acceso a internet</h3>
+    <h3>Acceso remoto</h3>
+    <h3>Direccionamiento IP</h3>
+  </div>
+  `)
 })
 navbarElements.push({
   button: createNavbarButton('Administración de servicios'),
-  content: createContentToOption('admin')
+  content: createContentToOption(`
+  <div class='servicios'>
+    <h3>Políticas de enrutamiento</h3>
+    <h3>Configuración DHCP</h3>
+    <p>Para poder realizar esta configuración es necesario que haya conexión en toda la red de la sede Trujillo, es decir que haya ping entre dispositivos de la red.</p>
+    <p>La configuración del archivo ubicado en <code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code> para poder establecer una dirección IP estática, una máscara y la IP del servidor DNS.</p>
+    <a href='./images/dhcp-conf1.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf1.png"></a>
+
+    <p>La configuración del archivo ubicado en <code>/etc/dhcp/dhcpd.conf</code> para definir todas las subredes que tenemos en nuestra topología de la sede Trujillo.</p>
+    <a href='./images/dhcp-conf2.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf2.png"></a>
+    <a href='./images/dhcp-conf3.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf3.png"></a>
+
+    <p>Luego reiniciamos el servicio de <code>network</code> y <code>dhcpd</code> y los habilitamos para que ejecuten cada vez que reinicie el servidor DHCP.</p>
+    <div><code>systemctl restart network</code></div>
+    <div><code>systemctl enable network</code></div>
+    <div><code>systemctl restart dhcpd</code></div>
+    <div><code>systemctl enable dhcpd</code></div>
+    <p>Ahora nos dirigimos hacia nuestra topología en GNS3 y configuramos los routers de la red como <code>relay-agent</code> para poder utilizar el servicio DHCP entre subredes de la siguiente manera:</p>
+    <a href='./images/dhcp-conf6.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf6.png"></a>
+
+    <p>Finalmente nos dirigimos hacia alguna de nuestras VPC's dentro de la red y probamos solicitando una IP con DHCP:</p>
+    <a href='./images/dhcp-conf4.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf4.png"></a>
+    <p>Podemos comprobar que efectivamente tenemos una IP y podemos hacer ping hacia el servidor DHCP por ejemplo:</p>
+    <a href='./images/dhcp-conf5.png' target='_blank'><img class='imp-adicional-img' src="./images/dhcp-conf5.png"></a>
+
+    <h3>Configuración DNS</h3>
+    <p>Para esta configuración análogamente al servicio DHCP, también requerimos que haya conexión en toda la red de la sede Trujillo.</p>
+    <p>La configuración del archivo ubicado en <code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code> para poder establecer una dirección IP estática al servidor DNS.</p>
+    <a href='./images/dns-conf1.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf1.png"></a>
+
+    <h3>Políticas de seguridad</h3>
+  </div>
+  `)
 })
 
 mainWrapper = addClassesToNode(mainWrapper, 'main-wrapper')

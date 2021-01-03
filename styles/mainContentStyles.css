@@ -53,11 +53,46 @@
   padding: 30px;
 }
 
+.bitacora h3 {
+  margin-top: 30px;
+}
+
+.imp-adicional-img {
+  width: 100%;
+  max-width: 1000px;
+}
+
 .docs {
   background-color: #f2f2f2;
   height: 100%;
   overflow-y: auto;
   padding: 30px;
+}
+
+.docs h3 {
+  margin-top: 30px;
+}
+
+.internetworking {
+  background-color: #f2f2f2;
+  height: 100%;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.servicios {
+  background-color: #f2f2f2;
+  height: 100%;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.servicios p {
+  margin-top: 20px;
+}
+
+.servicios h3 {
+  margin-top: 30px;
 }
 
 .hide-section {
