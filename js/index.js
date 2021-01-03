@@ -113,7 +113,7 @@ navbarElements.push({
     <ul>
       <li>Se muestra una tabla de acuerdo a los dispositivos de cada Sede:</li>
     </ul>
-    <img src="../images/auditoria-inventario.jpg">
+    <img src="/images/auditoria-inventario.jpg">
 
     <h3>Auditoría de Instalación:</h3>
     <ul>
