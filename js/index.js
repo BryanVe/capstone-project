@@ -177,11 +177,51 @@ navbarElements.push({
   content: createContentToOption(`
   <div class='internetworking'>
     <h3>Topología lógica</h3>
+    <h4>Conexión WAN entre sedes</h4>
+    <a href='./images/wan-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/wan-logica.png"></a>
+    <h4>Sede Central</h4>
+    <a href='./images/central-general-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/central-general-logica.png"></a>
+    <h4>Sede Atención al Cliente</h4>
+    <a href='./images/atencion-cliente-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/atencion-cliente-logica.png"></a>
+    <h4>Sede Trujillo</h4>
+    <a href='./images/trujillo-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/trujillo-logica.png"></a>
+
+
     <h3>Topología física</h3>
+    <h4>Conexión WAN entre sedes</h4>
+    <a href='./images/wan-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/wan-fisica.png"></a>
+    <h4>Sede Central</h4>
+    <h5>Servicio de informática</h5>
+    <a href='./images/informatica-central-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/informatica-central-fisica.png"></a>
+    <h5>Área de gerencias</h5>
+    <a href='./images/oficina-gerencias-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/oficina-gerencias-fisica.png"></a>
+    <h5>Área de estrategias empresariales</h5>
+    <a href='./images/empresariales-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/empresariales-fisica.png"></a>
+    
+    <h4>Sede Atención al Cliente</h4>
+    <h5>Área Atención a servicios empresariales</h5>
+    <a href='./images/servicios-empresariales.png' target='_blank'><img class='imp-adicional-img' src="./images/servicios-empresariales.png"></a>
+
+    <h5>Área de Atención al usuario</h5>
+    <a href='./images/atencion-usuario.png' target='_blank'><img class='imp-adicional-img' src="./images/atencion-usuario.png"></a>
+
+    <h5>Área de Recursos Humanos</h5>
+    <a href='./images/recursos-humanos.png' target='_blank'><img class='imp-adicional-img' src="./images/recursos-humanos.png"></a>
+
+    <h4>Sede Trujillo</h4>
+    <h5>Oficinas de jefatura</h5>
+    <a href='./images/jefatura-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/jefatura-fisica.png"></a>
+    <h5>Oficinas de estrategia empresarial</h5>
+    <a href='./images/estrategia-trujillo-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/estrategia-trujillo-fisica.png"></a>
+    <h5>Data Center Trujillo</h5>
+    <a href='./images/data-center-trujillo-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-trujillo-fisica.png"></a>
+
     <h3>Centralización de servidores</h3>
     <h3>Acceso a internet</h3>
     <h3>Acceso remoto</h3>
     <h3>Direccionamiento IP</h3>
+
+
   </div>
   `)
 })
