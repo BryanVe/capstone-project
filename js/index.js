@@ -217,8 +217,12 @@ navbarElements.push({
     <a href='./images/data-center-trujillo-fisica.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-trujillo-fisica.png"></a>
 
     <h3>Centralización de servidores</h3>
-    <h3>Acceso a internet</h3>
-    <h3>Acceso remoto</h3>
+    <p>Se ha realizado la centralización de los servidores en la sede Central en el área de servicio de informática y ya que la sede Atención al Cliente se encuentra cerca a la sede Central simplemente esta se comunica con la central directamente. Caso contrario para la sede Trujillo por la distancia que existe entre esta y la sede Central consideramos conveniente implementar un Data Center en esta sede con el objetivo de centralizar las solicitudes localmente y luego esto transmitirlo al Data Center Central cada cierto tiempo. Todo esto con el objetivo de evitar fallas al momento de hacer solicitudes al Data Center Central. Por lo tanto para nuestra topología tenemos los dos siguientes Data Centers.</p>
+    <h4>Data Center Central</h4>
+    <a href='./images/data-center-central.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-central.png"></a>
+    <h4>Data Center Trujillo</h4>
+    <a href='./images/data-center-trujillo.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-trujillo.png"></a>
+    
     <h3>Direccionamiento IP</h3>
 
 
