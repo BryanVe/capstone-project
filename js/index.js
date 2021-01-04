@@ -58,11 +58,11 @@ navbarElements.push({
         <p class='member-name'>Brando Miguel Palacios Mogollón</p>
       </div>
       <div class='member'>
-        <img class='member-img' alt='member-1' src='https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png' />
+        <img class='member-img' alt='member-1' src='./images/andy.jpg' />
         <p class='member-name'>Andy Franco Aguilar Coronel</p>
       </div>
       <div class='member'>
-        <img class='member-img' alt='member-1' src='https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png' />
+        <img class='member-img' alt='member-1' src='./images/roberto.jpeg' />
         <p class='member-name'>Roberto Alexis Cerna Espíritu</p>
       </div>
     </div>
@@ -143,14 +143,14 @@ navbarElements.push({
     <ul>
       <li>Se muestra una tabla de acuerdo a los dispositivos de cada Sede:</li>
     </ul>
-    <img src="./images/auditoria-inventario.jpg">
+    <a href='./images/auditoria-inventario.jpg' target='_blank'><img src="./images/auditoria-inventario.jpg"></a>
 
     <h3>Auditoría de Instalación:</h3>
     <ul>
       <li>Para las conexiones en las sedes Central y Atención al Cliente se han usado IP estáticas, para la sede Trujillo se han usado IP dinámicas.</li>
       <li>Todas las redes internas se está usando cable de red UTP CAT 6.</li>
-      <li>En la sede Central se han usado routers 7200 de Cisco como referencia.</li>
-      <li>En la sede Atención al Cliente se han usado routers 7200 de Cisco como referencia.</li>
+      <li>En la sede Central se han usado routers 3660 y 7200 de Cisco como referencia.</li>
+      <li>En la sede Atención al Cliente se han usado routers 3660 y 7200 de Cisco como referencia.</li>
       <li>En la sede Trujillo se han usado routers 3660 de Cisco como referencia.</li>
     </ul>
     
@@ -216,6 +216,30 @@ navbarElements.push({
     <p>Para esta configuración análogamente al servicio DHCP, también requerimos que haya conexión en toda la red de la sede Trujillo.</p>
     <p>La configuración del archivo ubicado en <code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code> para poder establecer una dirección IP estática al servidor DNS.</p>
     <a href='./images/dns-conf1.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf1.png"></a>
+    
+    <p>La configuración del archivo ubicado en <code>/etc/named.conf</code> para poder establecer la IP del servidor DNS, y las IP's autorizadas para poder usar el servicio así como las zonas respectivas (directa e inversa).</p>
+    <a href='./images/dns-conf2.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf2.png"></a>
+    <a href='./images/dns-conf3.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf3.png"></a>
+
+    <p>Luego configurar los archivos que referenciamos en el archivo anterior, <code>/var/named/capstone.uni</code> (directa) y <code>/var/named/9.168.192.revzone.dns</code> (inversa)</p>
+    <a href='./images/dns-conf4.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf4.png"></a>
+    <a href='./images/dns-conf5.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf5.png"></a>
+
+    <p>Establecemos también el host respectivo en <code>/etc/hosts</code></p>
+    <a href='./images/dns-conf6.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf6.png"></a>
+
+    <p>Y también configuramos el archivo <code>/etc/resolv.conf</code></p>
+    <a href='./images/dns-conf7.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf7.png"></a>
+
+    <p>Podemos probar primero en el mismo servidor DNS su adecuado funcionamiento con <code>nslookup</code></p>
+    <a href='./images/dns-conf8.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf8.png"></a>
+    <a href='./images/dns-conf9.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf9.png"></a>
+
+    <p>Para probar el servicio en nuestra topología nos dirigimos a una VPC cualquiera de la red y como el servicio DHCP ya nos otorga la dirección IP de nuestro servidor DNS ya que ya está configurado, podemos hacer directamente un <code>ping</code> a los diferentes dominios que hemos definido para los distintos departamentos de la sede Trujillo.</p>
+    <a href='./images/dns-conf10.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf10.png"></a>
+    <a href='./images/dns-conf11.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf11.png"></a>
+    <a href='./images/dns-conf12.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf12.png"></a>
+    <a href='./images/dns-conf13.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf13.png"></a>
 
     <h3>Políticas de seguridad</h3>
   </div>
