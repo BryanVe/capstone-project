@@ -121,16 +121,17 @@ navbarElements.push({
     <h3>Implementaciones adicionales:</h3>
     <p>Se implemento el protocolo IEEE 802.1Q conocido en GNS3 como dot1Q, genera un mecanismo que crea varias redes por un mismo medio fisico (switch) utilizando una misma interfaz en el cual se le añaden "sub interfazes" para generar varias redes, es decir el router tendra mas de una ip en la misma interfaz.
       Este se debe añadir en la configuracion del switch teniendo encuenta el puerto especifico.
-      Esto nos ayudara a crear diferentes VLAN por puerto.[1]</p>
+      Esto nos ayudara a crear diferentes VLAN por puerto.</p>
     <a href='./images/imp-adicionales1.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales1.png"></a>
     <a href='./images/imp-adicionales2.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales2.png"></a>
     <a href='./images/imp-adicionales3.png' target='_blank'><img class='imp-adicional-img' src="./images/imp-adicionales3.png"></a>
 
     <h3>Referencias bibliográficas:</h3>
-    <p>[1] José Domingo Muñoz, Trabajando con switch en GNS3: VLAN y Trunk. <a href="https://www.josedomingo.org/pledin/2014/02/trabajando-con-switch-en-gns3-vlan-y-trunk/">Link</a> </p> 
-
-
-    
+    <p>José Domingo Muñoz, Trabajando con switch en GNS3: VLAN y Trunk. <a href="https://www.josedomingo.org/pledin/2014/02/trabajando-con-switch-en-gns3-vlan-y-trunk/">Link</a> </p> 
+    <p>Manuel de Jesús Flores, Universidad Luteriana Salvadoreña, Direccionamiento VLAN. <a href='https://es.calameo.com/read/004816174785e8aacadc3'>Link</a></p>
+    <p>Topología de red. <a href='https://www.lifeder.com/topologias-de-red/'>Link</a></p>
+    <p>A Network Lab Management System Proposal for Network and Security Education. <a href='https://www.researchgate.net/figure/Sample-GNS3-topology-as-a-routing-assignment_fig2_316597594'>Link</a></p>
+    <p>Servidor DHCP. <a href='https://fp.josedomingo.org/serviciosgs/u02/'>Link</a></p>
   </div>
   `)
 })
@@ -224,6 +225,14 @@ navbarElements.push({
     <a href='./images/data-center-trujillo.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-trujillo.png"></a>
     
     <h3>Direccionamiento IP</h3>
+    <h4>Sede Central</h4>
+    <a href='./images/central-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/central-ips.png"></a>
+
+    <h4>Sede Atención al Cliente</h4>
+    <a href='./images/atencion-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/atencion-ips.png"></a>
+
+    <h4>Sede Trujillo</h4>
+    <a href='./images/trujillo-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/trujillo-ips.png"></a>
 
 
   </div>
@@ -234,6 +243,11 @@ navbarElements.push({
   content: createContentToOption(`
   <div class='servicios'>
     <h3>Políticas de enrutamiento</h3>
+    <p>Se realizó las políticas de enrutamiento en la sede Trujillo en cada router de forma que toda la sede posea conexión y se pueda hacer <code>ping</code> entre todos los nodos de la topología. Para ello configuramos cada router con <code>ip route "subred" "máscara" "ip-redirección"</code>.</p>
+    <h4>Ejemplo</h4>
+    <a href='./images/politicas1.png' target='_blank'><img class='imp-adicional-img' src="./images/politicas1.png"></a>
+    <a href='./images/politicas2.png' target='_blank'><img class='imp-adicional-img' src="./images/politicas2.png"></a>
+
     <h3>Configuración DHCP</h3>
     <p>Para poder realizar esta configuración es necesario que haya conexión en toda la red de la sede Trujillo, es decir que haya ping entre dispositivos de la red.</p>
     <p>La configuración del archivo ubicado en <code>/etc/sysconfig/network-scripts/ifcfg-enp0s3</code> para poder establecer una dirección IP estática, una máscara y la IP del servidor DNS.</p>
@@ -284,8 +298,6 @@ navbarElements.push({
     <a href='./images/dns-conf11.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf11.png"></a>
     <a href='./images/dns-conf12.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf12.png"></a>
     <a href='./images/dns-conf13.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf13.png"></a>
-
-    <h3>Políticas de seguridad</h3>
   </div>
   `)
 })
