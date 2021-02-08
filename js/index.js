@@ -87,6 +87,10 @@ navbarElements.push({
       <li><b>Fecha: 27/01/2020: </b>Añadimos Servidor DHCP y Servidor Test al data center</li>
       <li><b>Fecha: 30/12/2020: </b>Actualización de la topología usamos una unico router en el Servicio de Informatica con 3 sub mascaras usando un switch con 3 WLAN</li>
       <li><b>Fecha: 01/01/2021: </b>Propuesta de diseño de topologia fisica de la sede Central</li>
+      <li><b>Fecha: 18/01/2021: </b>Actualizacion de toda la topologia fisica y logica de la sede central, eliminacion de routers y uso del protocolo dot1q.</li>
+      <li><b>Fecha: 22/01/2021: </b>Implementacion, enrutamiento dinamico inter dominio , ripv2.</li>
+      <li><b>Fecha: 02/01/2021: </b>Implementacion, posicionamiento de firewalls en la topologia fisica.</li>
+      <li><b>Fecha: 07/01/2021: </b>Actualizacion, conexion de Sede Atencion a cliente y Sede Central, protocolo tipo BGP.</li>
     </ul>
     <h3>Fechas Sede Atención al Cliente</h3>
     <ul>
@@ -180,6 +184,8 @@ navbarElements.push({
     <h3>Topología lógica</h3>
     <h4>Conexión WAN entre sedes</h4>
     <a href='./images/wan-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/wan-logica.png"></a>
+    <h4>Firewall entre sedes</h4>
+    <a href='./images/firewall-sedes.png' target='_blank'><img class='imp-adicional-img' src="./images/firewall-sedes.png"></a>
     <h4>Sede Central</h4>
     <a href='./images/central-general-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/central-general-logica.png"></a>
     <h4>Sede Atención al Cliente</h4>
