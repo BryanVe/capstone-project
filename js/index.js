@@ -275,6 +275,8 @@ navbarElements.push({
     <h4>Sede Trujillo</h4>
     <a href='./images/trujillo-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/trujillo-ips.png"></a>
 
+    <h4>Data Center - Sede Trujillo</h4>
+    <a href='./images/datacenter-trujillo-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/datacenter-trujillo-ips.png"></a>
   </div>
   `)
 })
@@ -342,7 +344,7 @@ navbarElements.push({
     <a href='./images/dns-conf13.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf13.png"></a>
 
     <h3>Políticas de seguridad</h3>
-    <p>Para esta configuración análogamente al servicio DHCP, también requerimos que haya conexión en toda la red de la sede Trujillo.</p>
+    <a href='./images/firewall-table.png' target='_blank'><img class='imp-adicional-img' src="./images/firewall-table.png"></a>
 
     <h3>Software utilizado en los servidores</h3>
     <p>Se utilizó la sede Trujillo como modelo de implementación utilizando máquinas virtuales CentOS 7.</p>
