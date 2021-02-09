@@ -109,9 +109,12 @@ navbarElements.push({
       <li><b>Fecha: 27/01/2020: </b>Definición de las subnets en el archivo de configuración de DHCP para poder establecer los rangos de IP válidos para cada una.</li>
       <li><b>Fecha: 30/12/2020: </b>Implementación de políticas de enrutamiento en los routers mediante el uso de "ip route" para poder redireccionar a las subnets debidas en el enrutamiento. Y realización de pruebas con ping.</li>
       <li><b>Fecha: 01/01/2021: </b>Pruebas de solicitud DHCP en cada subnet para la asignación de IP's a las VPCS y realización de pruebas con "trace" para visualizar las redirecciones</li>
+      <li><b>Fecha: 18/01/2021: </b>Optimización de la cantidad de routers, fueron disminuidos y reemplazados por switches mediantes el uso de encapsulamiento dot1Q para la creación de VLANs.</li>
+      <li><b>Fecha: 24/01/2021: </b>Actualización del enrutamiento estático por uno dinámico (RIPv2).</li>
+      <li><b>Fecha: 27/01/2021: </b>Implementación de firewall en la topología.</li>
     </ul>
     <h3>Inconvenientes con el estudio del proyecto:</h3>
-    <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. La solución más accesible sería por VPN la cual es la que se está implementando en el modelamiento.</p>
+    <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. Usamos la opcion de la fibra por temas de costo en firewall. La conexion del dhcp con el protocolo dot1q ofrece conflictos en sus requerimientos.</p>
 
     <h3>Inconvenientes con la implementación:</h3>
     <p>Es complicado crear una topología que se vea de manera completa en un solo proyecto de gns3, así que la implementación se ha llevado por partes, mostrando cada sede, y también mostrando un resumen de interconexión entre las sedes.</p>
@@ -153,6 +156,10 @@ navbarElements.push({
     <h3>Auditoría de Instalación:</h3>
     <ul>
       <li>Para las conexiones en las sedes Central y Atención al Cliente se han usado IP estáticas, para la sede Trujillo se han usado IP dinámicas.</li>
+      <li>Se implementó enrutamiento dinámico RIP - RFC 2453 en todas las sedes a nivel IGP (Interior Gateway Protocol).</li>
+      <li>Se implementó enrutamiento dinámico BGP - RFC 1771 entre la sede Atención al Cliente y sede Central.</li>
+      <li>Se implementó un firewall entre los routers de Borde de la sedes Trujillo y Central y el router del servicio de Internet contratado.</li>
+      <li>Se implementó un firewall en los datacenters de Trujillo y Central con sus routers anexos.</li>
       <li>Todas las redes internas se está usando cable de red UTP CAT 6.</li>
       <li>En la sede Central se han usado routers 3660 y 7200 de Cisco como referencia.</li>
       <li>En la sede Atención al Cliente se han usado routers 3660 y 7200 de Cisco como referencia.</li>
@@ -161,13 +168,16 @@ navbarElements.push({
     
     <h3>Auditorías Operacional:</h3>
     <ul>
-      <li>La conexión entre las sedes Central y Atención al Cliente se ha priorizado que sea por VPN para reducir costos.</li>
+      <li>La conexión entre las sedes Central y Atención al Cliente será por enrutamiento BGP.</li>
+      <li>La conexión de los datacenter poseen un firewall tipo perimetral en toda la sede y dentro de ella para acceder a estos servidores.</li>
       <li>Los Routers usados tienen buena estabilidad y rendimiento pero pueden cambiarse por routers Cisco 2691 más accesibles.</li>
     </ul>
     
     <h3>Auditorías de eficiencia:</h3>
     <ul>
       <li>Se ha modelado de forma que se tenga la menor cantidad de Routers y más switches, para mejorar así el encaminamiento de la conexión entre los dispositivos.</li>
+      <li>Se a minimizado el número de firewalls conectando las sedes mas cercanas dando asi un único acceso a internet de estas 2 sedes evitando un doble firewall por sede, siendo que solo trujillo la única sede con una firewall personal.</li>
+      <li>Dada la forma de nuestra topología se nos es innecesario el uso de un protocolo STP, y ademas, preferimos el uso de RIPs puesto que el encaminamiento dentro de las sedes puede ser mejor percibido por la métrica vector-distancia, dado que no existe un camino que exceda los 15 enlaces.</li>
     </ul>
     
     <h3>Auditorías de seguridad:</h3>
