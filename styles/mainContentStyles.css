@@ -112,6 +112,10 @@
   display: none;
 }
 
+.margin-top {
+  margin-top: 30px;
+}
+
 @media (max-width: 1400px) {
   .main-wrapper {
     height: calc(100vh - 155px);

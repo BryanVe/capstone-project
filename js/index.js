@@ -118,7 +118,7 @@ navbarElements.push({
       <li><b>Fecha: 05/02/2021: </b>Implementación de firewall en la topología.</li>
     </ul>
     <h3>Inconvenientes con el estudio del proyecto:</h3>
-    <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. Usamos la opcion de la fibra por temas de costo en firewall. La conexion del dhcp con el protocolo dot1q ofrece conflictos en sus requerimientos.</p>
+    <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. Usamos la opción de la fibra por temas de costo en firewall. La conexión del dhcp con el protocolo dot1q ofrece conflictos en sus requerimientos.</p>
 
     <h3>Inconvenientes con la implementación:</h3>
     <p>Es complicado crear una topología que se vea de manera completa en un solo proyecto de gns3, así que la implementación se ha llevado por partes, mostrando cada sede, y también mostrando un resumen de interconexión entre las sedes.</p>
@@ -128,7 +128,7 @@ navbarElements.push({
     <p>Uno de los inconvenientes es no conocer el plano interno de la empresa, el modelado se realiza a partir de un modelo conceptual de posibles ubicaciones, estos pueden adaptarse al plano real de la empresa.</p>
 
     <h3>Problemas que hayan surgido con su resolución:</h3>
-    <p>Existieron problemas con la implementación DHCP, en la sede Trujillo, en la configuración interna del servidor, Se arregló reescribiendo los archivos de configuración DHCP del servidor.</p>
+    <p>Existieron problemas con la implementación del servicio DHCP en la sede Trujillo en la configuración interna del servidor debido al nuevo cambio de la topología, ya que hemos eliminado 8 routers usando 2 switches con subredes virtuales mediante el uso dot1Q. Esto hace que DHCP no pueda reconocerestas subredes ya que las identifica como una sola subred.</p>
 
     <h3>Implementaciones adicionales:</h3>
     <p>Se implemento el protocolo IEEE 802.1Q conocido en GNS3 como dot1Q, genera un mecanismo que crea varias redes por un mismo medio fisico (switch) utilizando una misma interfaz en el cual se le añaden "sub interfazes" para generar varias redes, es decir el router tendra mas de una ip en la misma interfaz.
@@ -144,6 +144,9 @@ navbarElements.push({
     <p>Topología de red. <a href='https://www.lifeder.com/topologias-de-red/'>Link</a></p>
     <p>A Network Lab Management System Proposal for Network and Security Education. <a href='https://www.researchgate.net/figure/Sample-GNS3-topology-as-a-routing-assignment_fig2_316597594'>Link</a></p>
     <p>Servidor DHCP. <a href='https://fp.josedomingo.org/serviciosgs/u02/'>Link</a></p>
+    <p>BGP routing. <a href='https://www.imperva.com/blog/bgp-routing-explained/'>Link</a></p>
+    <p>RIPv2, BGP. <a href='https://www.corente.com/appnet/help/webhelp/network-rip.html'>Link</a></p>
+    <p>RIP - BGP Routing Protocols Example. <a href='https://blog.ragasys.es/ejemplo-protocolos-de-enrutamiento-rip-bgp'>Link</a></p>
   </div>
   `)
 })
@@ -187,7 +190,10 @@ navbarElements.push({
     
     <h3>Auditorías de seguridad:</h3>
     <ul>
-      <li>Aún no se han instalado Firewalls, pero si hay routers para cada área de la sedes, para permitir puertas individuales a cada una.</li>
+      <li>En la sede central se colocó un firewall previo a la conexión con la sede, de esta manera permitimos que lo paquetes que llegan de internet sean filtrados por el firewall.</li>
+      <li>Ya que estamos utilizando fibra oscura, la conexión con la sede atención al cliente no requiere de un firewall debido a que el filtrado de paquetes está centralizado en la sede central.</li>
+      <li>Puesto que la sede central posee un datacenter, este requerirá un firewall propio.</li>
+      <li>La sede Trujillo posee 2 firewalls, uno ubicado antes del router de borde y otro conectado al router del datacenter.</li>
     </ul>
   </div>
   `)
@@ -245,16 +251,29 @@ navbarElements.push({
     <h4>Data Center Trujillo</h4>
     <a href='./images/data-center-trujillo.png' target='_blank'><img class='imp-adicional-img' src="./images/data-center-trujillo.png"></a>
     
+    <h3>Acceso remoto</h3>
+    <p class='margin-top'>Se utilizó el protocolo SSH para el acceso remoto de un router a otro en la sede central y la de atención al cliente. Se crea un usuario Admin en el en el router con el objetivo de poder tener "acceso directo" a toda la red, en este caso estamos creado el usuario para el servicio de informática.</p>
+    <a href='./images/ssh-conf.png' target='_blank'><img class='imp-adicional-img' src="./images/ssh-conf.png"></a>
+    
+    <p class='margin-top'>Desde gerencias usando el comando "ssh -l" vamos a poder ingresar a dicho router remótamente.</p>
+    <a href='./images/ssh-conf2.png' target='_blank'><img class='imp-adicional-img' src="./images/ssh-conf2.png"></a>
+    
+    <p class='margin-top'>Entre los paquetes podemos ver la presencia de SSH durante el acceso remoto abierto hasta cerrada la sección. Entre estos paquetes podemos ver una conexión Cliente-Servidor usando el uso de RSA para claves publicas y privadas.</p>
+    <a href='./images/ssh-conf3.png' target='_blank'><img class='imp-adicional-img' src="./images/ssh-conf3.png"></a>
+
+    
     <h3>Direccionamiento IP</h3>
     <h4>Sede Central</h4>
     <a href='./images/central-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/central-ips.png"></a>
+
+    <h4>Data Center - Sede Central</h4>
+    <a href='./images/datacenter-central-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/datacenter-central-ips.png"></a>
 
     <h4>Sede Atención al Cliente</h4>
     <a href='./images/atencion-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/atencion-ips.png"></a>
 
     <h4>Sede Trujillo</h4>
     <a href='./images/trujillo-ips.png' target='_blank'><img class='imp-adicional-img' src="./images/trujillo-ips.png"></a>
-
 
   </div>
   `)
@@ -266,6 +285,7 @@ navbarElements.push({
     <h3>Políticas de enrutamiento</h3>
     <p>Para el enrutamiento intradominio se utilizó el protocolo RIPv2 en todos los routers de las sedes, de forma que facilite y se evite configurar cada subred en cada router manualmente.</p>
     <a href='./images/ripv2-conf.png' target='_blank'><img class='imp-adicional-img' src="./images/ripv2-conf.png"></a>
+    <p>BGP conocido como Border Gateway Protocol es un protocolo de enrutamiento utilizado en internet, específicamente en este caso utilizamos eBGP el cual sería una BGP externo para la conexión entre la sede central de sede Atención al Cliente. Este protocolo utiliza una arquitectura de Autonomous System el cual utilizara números, este es un número único que puede representar un proveedor de internet, empresa,universidad. De esta manera utilizando los AS y definiendolos como vecinos a los routers que se desean conectar, se puede realizar este enrutamiento.</p>
     <p>Para el enrutamiento interdominio se utilizó el protocolo BGP en los routers de borde de la sede central y atención al cliente.</p>
     <a href='./images/bgp-conf1.jpeg' target='_blank'><img class='imp-adicional-img' src="./images/bgp-conf1.jpeg"></a>
     <a href='./images/bgp-conf2.jpeg' target='_blank'><img class='imp-adicional-img' src="./images/bgp-conf2.jpeg"></a>
@@ -320,6 +340,15 @@ navbarElements.push({
     <a href='./images/dns-conf11.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf11.png"></a>
     <a href='./images/dns-conf12.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf12.png"></a>
     <a href='./images/dns-conf13.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf13.png"></a>
+
+    <h3>Políticas de seguridad</h3>
+    <p>Para esta configuración análogamente al servicio DHCP, también requerimos que haya conexión en toda la red de la sede Trujillo.</p>
+
+    <h3>Software utilizado en los servidores</h3>
+    <p>Se utilizó la sede Trujillo como modelo de implementación utilizando máquinas virtuales CentOS 7.</p>
+    <p>Se implementó un servidor DHCP.</p>
+    <p>Se implementó un servidor DNS maestro.</p>
+
   </div>
   `)
 })
