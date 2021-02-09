@@ -194,6 +194,8 @@ navbarElements.push({
       <li>Ya que estamos utilizando fibra oscura, la conexión con la sede atención al cliente no requiere de un firewall debido a que el filtrado de paquetes está centralizado en la sede central.</li>
       <li>Puesto que la sede central posee un datacenter, este requerirá un firewall propio.</li>
       <li>La sede Trujillo posee 2 firewalls, uno ubicado antes del router de borde y otro conectado al router del datacenter.</li>
+      <li>El tipo de seguridad implementado es restrictivo.</li>
+      <li>Los datacenters están asegurados con 2 barreras de protección (basteón y contención).</li>
     </ul>
   </div>
   `)
@@ -344,7 +346,17 @@ navbarElements.push({
     <a href='./images/dns-conf13.png' target='_blank'><img class='imp-adicional-img' src="./images/dns-conf13.png"></a>
 
     <h3>Políticas de seguridad</h3>
+    <h4>Firewall principal de la sede central</h4>
+    <a href='./images/firewall-principal-central.png' target='_blank'><img class='imp-adicional-img' src="./images/firewall-principal-central.png"></a>
+    
+    <h4>Firewall del Data Center de la sede central</h4>
     <a href='./images/firewall-table.png' target='_blank'><img class='imp-adicional-img' src="./images/firewall-table.png"></a>
+
+    <h4>Firewall principal de la sede Trujillo</h4>
+    <a href='./images/firewall-principal-trujillo.png' target='_blank'><img class='imp-adicional-img' src="./images/firewall-principal-trujillo.png"></a>
+
+    <h4>Firewall del Data Center de la sede trujillo</h4>
+    <a href='./images/datacenter-trujillo-table.png' target='_blank'><img class='imp-adicional-img' src="./images/datacenter-trujillo-table.png"></a>
 
     <h3>Software utilizado en los servidores</h3>
     <p>Se utilizó la sede Trujillo como modelo de implementación utilizando máquinas virtuales CentOS 7.</p>
