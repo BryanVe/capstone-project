@@ -87,10 +87,10 @@ navbarElements.push({
       <li><b>Fecha: 27/01/2020: </b>Añadimos Servidor DHCP y Servidor Test al data center</li>
       <li><b>Fecha: 30/12/2020: </b>Actualización de la topología usamos una unico router en el Servicio de Informatica con 3 sub mascaras usando un switch con 3 WLAN</li>
       <li><b>Fecha: 01/01/2021: </b>Propuesta de diseño de topologia fisica de la sede Central</li>
-      <li><b>Fecha: 18/01/2021: </b>Actualizacion de toda la topologia fisica y logica de la sede central, eliminacion de routers y uso del protocolo dot1q.</li>
-      <li><b>Fecha: 22/01/2021: </b>Implementacion, enrutamiento dinamico inter dominio , ripv2.</li>
-      <li><b>Fecha: 02/01/2021: </b>Implementacion, posicionamiento de firewalls en la topologia fisica.</li>
-      <li><b>Fecha: 07/01/2021: </b>Actualizacion, conexion de Sede Atencion a cliente y Sede Central, protocolo tipo BGP.</li>
+      <li><b>Fecha: 18/01/2021: </b>Actualización de toda la topologia física y lógica de la sede central, eliminación de routers y uso del protocolo dot1q.</li>
+      <li><b>Fecha: 22/01/2021: </b>Implementación, enrutamiento dinámico interdominio , ripv2.</li>
+      <li><b>Fecha: 02/02/2021: </b>Implementación, posicionamiento de firewalls en la topología física.</li>
+      <li><b>Fecha: 07/02/2021: </b>Actualización, conexión de Sede Atención a cliente y Sede Central, protocolo tipo BGP.</li>
     </ul>
     <h3>Fechas Sede Atención al Cliente</h3>
     <ul>
@@ -99,6 +99,10 @@ navbarElements.push({
       <li><b>Fecha: 20/12/2020: </b>Topología de la conexión hacia las Sede Trujillo y Sede Central</li>
       <li><b>Fecha: 29/12/2020: </b>Llenado del inventario de la sede atención al cliente</li>
       <li><b>Fecha: 02/01/2021: </b>LLenado de los rangos de ip de la sede atención al cliente</li>
+      <li><b>Fecha: 17/01/2021: </b>Correciones a la topología, se reducieron el número de routers y switches, además de actualizarse el inventario e IPs.</li>
+      <li><b>Fecha: 24/01/2021: </b>Implementación de VLANs el los 3 switches que representan a cada área de la sede central.</li>
+      <li><b>Fecha: 30/01/2021: </b>Implementación del protocolo RIP entre los routers de interconexión de las sedes.</li>
+      <li><b>Fecha: 06/02/2021: </b>Implementación del protocolo BGP para la conexión con las otras sedes y añadirlo al protocolo RIP.</li>
     </ul>
     <h3>Fechas Sede Trujillo:</h3>
     <ul>
@@ -111,13 +115,14 @@ navbarElements.push({
       <li><b>Fecha: 01/01/2021: </b>Pruebas de solicitud DHCP en cada subnet para la asignación de IP's a las VPCS y realización de pruebas con "trace" para visualizar las redirecciones</li>
       <li><b>Fecha: 18/01/2021: </b>Optimización de la cantidad de routers, fueron disminuidos y reemplazados por switches mediantes el uso de encapsulamiento dot1Q para la creación de VLANs.</li>
       <li><b>Fecha: 24/01/2021: </b>Actualización del enrutamiento estático por uno dinámico (RIPv2).</li>
-      <li><b>Fecha: 27/01/2021: </b>Implementación de firewall en la topología.</li>
+      <li><b>Fecha: 05/02/2021: </b>Implementación de firewall en la topología.</li>
     </ul>
     <h3>Inconvenientes con el estudio del proyecto:</h3>
     <p>Se tuvo la duda del tipo de conexión que usará la empresa para la comunicación entre la sede Central y la de atención al Cliente, podría ser conexión directa a través de fibra óptica, o a través de una red VPN. Usamos la opcion de la fibra por temas de costo en firewall. La conexion del dhcp con el protocolo dot1q ofrece conflictos en sus requerimientos.</p>
 
     <h3>Inconvenientes con la implementación:</h3>
     <p>Es complicado crear una topología que se vea de manera completa en un solo proyecto de gns3, así que la implementación se ha llevado por partes, mostrando cada sede, y también mostrando un resumen de interconexión entre las sedes.</p>
+    <p>En la implementación del ssh, las vpcs no tienen un servicio ssh, debido a esto los routers son los únicos que pueden acceder a otros routers mediante ssh, en caso que se quiera realizar desde una vpc esta no se podría realizar.</p>
 
     <h3>Inconvenientes con los requisitos:</h3>
     <p>Uno de los inconvenientes es no conocer el plano interno de la empresa, el modelado se realiza a partir de un modelo conceptual de posibles ubicaciones, estos pueden adaptarse al plano real de la empresa.</p>
@@ -199,7 +204,7 @@ navbarElements.push({
     <h4>Sede Central</h4>
     <a href='./images/central-general-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/central-general-logica.png"></a>
     <h4>Sede Atención al Cliente</h4>
-    <a href='./images/atencion-cliente-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/atencion-cliente-logica.png"></a>
+    <a href='./images/atencion-cliente-logica.jpeg' target='_blank'><img class='imp-adicional-img' src="./images/atencion-cliente-logica.jpeg"></a>
     <h4>Sede Trujillo</h4>
     <a href='./images/trujillo-logica.png' target='_blank'><img class='imp-adicional-img' src="./images/trujillo-logica.png"></a>
 
@@ -259,10 +264,11 @@ navbarElements.push({
   content: createContentToOption(`
   <div class='servicios'>
     <h3>Políticas de enrutamiento</h3>
-    <p>Se realizó las políticas de enrutamiento en la sede Trujillo en cada router de forma que toda la sede posea conexión y se pueda hacer <code>ping</code> entre todos los nodos de la topología. Para ello configuramos cada router con <code>ip route "subred" "máscara" "ip-redirección"</code>.</p>
-    <h4>Ejemplo</h4>
-    <a href='./images/politicas1.png' target='_blank'><img class='imp-adicional-img' src="./images/politicas1.png"></a>
-    <a href='./images/politicas2.png' target='_blank'><img class='imp-adicional-img' src="./images/politicas2.png"></a>
+    <p>Para el enrutamiento intradominio se utilizó el protocolo RIPv2 en todos los routers de las sedes, de forma que facilite y se evite configurar cada subred en cada router manualmente.</p>
+    <a href='./images/ripv2-conf.png' target='_blank'><img class='imp-adicional-img' src="./images/ripv2-conf.png"></a>
+    <p>Para el enrutamiento interdominio se utilizó el protocolo BGP en los routers de borde de la sede central y atención al cliente.</p>
+    <a href='./images/bgp-conf1.jpeg' target='_blank'><img class='imp-adicional-img' src="./images/bgp-conf1.jpeg"></a>
+    <a href='./images/bgp-conf2.jpeg' target='_blank'><img class='imp-adicional-img' src="./images/bgp-conf2.jpeg"></a>
 
     <h3>Configuración DHCP</h3>
     <p>Para poder realizar esta configuración es necesario que haya conexión en toda la red de la sede Trujillo, es decir que haya ping entre dispositivos de la red.</p>
