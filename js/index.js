@@ -51,7 +51,7 @@ navbarElements.push({
     <div class='members'>
       <div class='member'>
         <img class='member-img' alt='member-1' src='https://avatars3.githubusercontent.com/u/45080817?s=400&u=8cd9a60cf18c63fdcc88dc3b2eb13a18b3503d30&v=4' />
-        <p class='member-name'>George Bryan Vera Esquives</p>
+        <p class='member-name'>George Bryannnnnnnnnnnnnn Vera Esquives</p>
       </div>
       <div class='member'>
         <img class='member-img' alt='member-2' src='https://avatars1.githubusercontent.com/u/44950600?s=400&u=8630fe0f5841d5626b799ad6e67bdcef5c0cb565&v=4' />
